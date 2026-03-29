@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+
+            <h1>🌍 World Quiz</h1>
+
+            <h3>User: <%= user.username %>
+            </h3>
+            <h3>Score: <%= score %>
+            </h3>
+
+            <div class="question">
+                Country: <%= question.country %>
+            </div>
+
+            <!-- TIMER -->
+            <div class="timer">
+                Time Left: <span id="time">15</span>s
+            </div>
+
+            <!-- PROGRESS BAR -->
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <!-- QUIZ FORM (FIXED ID) -->
+            <form id="quizForm" method="POST" action="/submit">
+                <input name="answer" placeholder="Enter capital" required />
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- RESULT -->
+            <% if (typeof wasCorrect !=="undefined" ) { %>
+                <% if (wasCorrect) { %>
+                    <p class="correct">Correct ✔</p>
+                    <% } else { %>
+                        <p class="wrong">Wrong ✖</p>
+                        <% } %>
+                            <% } %>
+
+                                <!-- SAVE SCORE -->
+                                <form method="POST" action="/save-score">
+                                    <button type="submit">Save Score</button>
+                                </form>
+
+                                <a href="/leaderboard">View Leaderboard</a>
+
+        </div>
+    </div>
+
+    <!-- GAME SCRIPT -->
+    <script>
+        let timeLeft = 15;
+        let submitted = false;
+
+        let timer = document.getElementById("time");
+        let bar = document.getElementById("progressBar");
+
+        let interval = setInterval(() => {
+            timeLeft--;
+            timer.innerText = timeLeft;
+
+            bar.style.width = ((15 - timeLeft) / 15) * 100 + "%";
+
+            if (timeLeft <= 0 && !submitted) {
+                submitted = true;
+                clearInterval(interval);
+                document.getElementById("quizForm").submit();
+            }
+        }, 1000);
+
+        // SHAKE EFFECT ON WRONG ANSWER
+        if (typeof wasCorrect !== "undefined" && !wasCorrect) {
+            document.querySelector(".card").classList.add("shake");
+        } 
+    </script>
+
+</body>
+
+</html>

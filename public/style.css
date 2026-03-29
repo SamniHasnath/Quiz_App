@@ -1,0 +1,223 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+/* CENTER */
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: rgba(17, 24, 39, 0.9);
+  padding: 30px;
+  border-radius: 18px;
+  width: 400px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+
+/* TITLE */
+h1 {
+  text-align: center;
+  color: #60a5fa;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+h2, h3, p {
+  text-align: center;
+}
+
+/* INPUT */
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #0b1220;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #60a5fa;
+  transform: scale(1.02);
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #1d4ed8, #2563eb);
+}
+
+/* LINKS */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+}
+
+/* QUIZ QUESTION */
+.question {
+  font-size: 22px;
+  color: #fbbf24;
+  margin: 15px 0;
+}
+
+/* CORRECT / WRONG */
+.correct {
+  color: #22c55e;
+  text-align: center;
+}
+
+.wrong {
+  color: #ef4444;
+  text-align: center;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #334155;
+}
+
+th {
+  background: #1f2937;
+  color: #60a5fa;
+}
+
+tr:hover {
+  background: #1e293b;
+}
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 20%, #3b82f6 0%, transparent 40%),
+              radial-gradient(circle at 80% 80%, #22c55e 0%, transparent 40%);
+  opacity: 0.15;
+  animation: moveBg 10s infinite alternate;
+  z-index: -1;
+}
+
+@keyframes moveBg {
+  from { transform: translateY(0px); }
+  to { transform: translateY(20px); }
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+.progress {
+  width: 100%;
+  height: 10px;
+  background: #1f2937;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6, #22c55e);
+  transition: 0.4s ease;
+}
+
+/* =========================
+   TIMER
+========================= */
+.timer {
+  font-size: 18px;
+  color: #fbbf24;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   WRONG SHAKE ANIMATION
+========================= */
+.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* =========================
+   GAME OVER SCREEN
+========================= */
+.gameover {
+  text-align: center;
+  padding: 20px;
+}
+
+.gameover h1 {
+  color: #ef4444;
+  font-size: 32px;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .question {
+    font-size: 18px;
+  }
+}
